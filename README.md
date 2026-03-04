@@ -491,6 +491,15 @@ python3 scripts/evaluate_vo_accuracy.py \
     --json-out evaluation_results/metrics.json
 ```
 
+### C. Output Trajectory Format (TUM)
+
+```
+# timestamp x y z qx qy qz qw
+1698132964.499888 0.0000000 0.0000000 0.0000000 -0.0000000 -0.0000000 -0.0000000 1.0000000
+1698132964.599976 -0.0198950 0.0163751 -0.0965251 -0.0048082 0.0122335 0.0013237 0.9999127
+...
+```
+
 ### D. Native evo Commands (Recommended)
 
 If you prefer to run evo directly (no custom scripts), use:
@@ -515,16 +524,6 @@ evo_rpe tum ground_truth.txt CameraTrajectory.txt \
   --delta 10 --delta_unit m \
   --pose_relation angle_deg -va
 ```
-
-### C. Output Trajectory Format (TUM)
-
-```
-# timestamp x y z qx qy qz qw
-1698132964.499888 0.0000000 0.0000000 0.0000000 -0.0000000 -0.0000000 -0.0000000 1.0000000
-1698132964.599976 -0.0198950 0.0163751 -0.0965251 -0.0048082 0.0122335 0.0013237 0.9999127
-...
-```
-
 ---
 
 <div align="center">
