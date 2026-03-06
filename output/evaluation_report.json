@@ -14,23 +14,23 @@
         "ate": {
             "rmse": 1.7409079037465311,
             "mean": 0.865972175354548,
-            "median": 2.0145,
+            "median": 0.6434868063744175,
             "std": 1.5102491585294304,
-            "min": 0.9402,
-            "max": 5.9473,
+            "min": 0.11877175099190171,
+            "max": 25.87318197270453,
             "unit": "meters"
         },
         "rpe": {
             "trans_rmse": 15.163911854571793,
             "trans_mean": 13.355601640370502,
-            "trans_median": 0.9636,
-            "trans_std": 1.2496,
+            "trans_median": 14.156246871128998,
+            "trans_std": 7.181373653901863,
             "delta_frames": 10,
             "unit": "meters"
         },
         "scale_error": {
-            "scale_ratio": 0.9162,
-            "scale_drift_percent": 8.38,
+            "scale_ratio": 00,
+            "scale_drift_percent": 00,
             "unit": "percentage"
         }
     },
