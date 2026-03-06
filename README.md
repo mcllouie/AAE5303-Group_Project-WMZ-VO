@@ -358,8 +358,8 @@ Rotation drift rate:        109.47204601618212 deg/100m
 
 | Parameter | Value |
 |-----------|-------|
-| **Sim(3) scale correction** | 6.5944 |
-| **Sim(3) translation** | [-45.426, -95.559, 36.060] m |
+| **Sim(3) scale correction** | 7.4120233006636935 |
+| **Sim(3) translation** | [0.33011584, 0.06634049, 6.1227189] m |
 | **Association threshold** | \(t_{max\_diff}\) = 0.1 s |
 | **Association rate (Completeness)** | 94.98% |
 
