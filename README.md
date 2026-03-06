@@ -367,10 +367,10 @@ Rotation drift rate:        109.47204601618212 deg/100m
 
 | Metric | Value | Grade | Interpretation |
 |--------|-------|-------|----------------|
-| **ATE RMSE** | 1.74 m | B | Small global error after alignment |
-| **RPE Trans Drift** | 1.34 m/m | B | Small local drift per traveled distance |
+| **ATE RMSE** | 1.74 m | A | Small global error after alignment |
+| **RPE Trans Drift** | 1.34 m/m | A | Small local drift per traveled distance |
 | **RPE Rot Drift** | 109.47 deg/100m | E | Severe orientation drift |
-| **Completeness** | 94.99% | B | Many poses can be evaluated, accuracy is ok |
+| **Completeness** | 94.99% | B | Many poses can be evaluated, accuracy is good |
 
 ---
 
@@ -465,12 +465,14 @@ AAE5303_assignment2_orbslam3_demo-/
 │   └── evaluation_report.json
 ├── scripts/
 │   └── evaluate_vo_accuracy.py
+│   └── generate_report_figures.py
 ├── docs/
 │   └── HKisland_GNSS03-6.yaml
 └── leaderboard/
     ├── README.md
     ├── LEADERBOARD_SUBMISSION_GUIDE.md
     └── submission_template.json
+    └── ORB_SLAM3_TIPS.md
 ```
 
 ### B. Running Commands
