@@ -239,7 +239,7 @@ The dataset is from the **MARS-LVIG** UAV dataset, captured over Hong Kong Islan
 | **Total Images** | 7,499 frames |
 | **Image Resolution** | 2448 × 2048 pixels |
 | **Frame Rate** | ~10 Hz |
-| **Trajectory Length** | ~3,550 meters |
+| **Trajectory Length** | ~4,900 meters |
 | **Height Variation** | 0 - 80 meters |
 
 ### Data Sources
@@ -419,7 +419,7 @@ This figure is generated from the same inputs used for evaluation (`ground_truth
 
 This assignment demonstrates monocular Visual Odometry implementation using ORB-SLAM3 on UAV aerial imagery. Key findings:
 
-1. ✅ **System Operation**: ORB-SLAM3 successfully processes 3,535 images over 3.5 km trajectory
+1. ✅ **System Operation**: ORB-SLAM3 successfully processes 3,535 images over 4.89 km trajectory
 2. ✅ **Evaluation coverage**: 94.27% completeness shows that many poses can be evaluated against RTK ground truth
 3. ✅ **Tracking stability**: Seldom tracking failures indicate strong robustness measures
 4. ⚠️ **Accuracy**: The current baseline exhibits very rotation drift rates error on this sequence
