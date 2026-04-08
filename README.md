@@ -4,7 +4,7 @@
 
 ![ORB-SLAM3](https://img.shields.io/badge/SLAM-ORB--SLAM3-blue?style=for-the-badge)
 ![VO](https://img.shields.io/badge/Mode-Visual_Odometry-green?style=for-the-badge)
-![Dataset](https://img.shields.io/badge/Dataset-HKisland__GNSS03-orange?style=for-the-badge)
+![Dataset](https://img.shields.io/badge/Dataset-AMtown02-orange?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Baseline-success?style=for-the-badge)
 
 **Monocular Visual Odometry Evaluation on UAV Aerial Imagery**
