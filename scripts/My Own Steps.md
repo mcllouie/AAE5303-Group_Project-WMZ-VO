@@ -14,6 +14,7 @@ rosbag play --rate 0.5 XXX.bag /dji_osdk_ros/imu:=/imu
 Evaluation:
 
 Extract RTK ground truth (Edit Script for Name)
+
 python3 AA_Extract_Ground_Truth.py HKisland_GNSS03.bag --output ground_truth.txt
 
 Evaluate trajectory:
