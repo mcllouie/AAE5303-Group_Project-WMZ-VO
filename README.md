@@ -378,7 +378,7 @@ Rotation drift rate:        43.04172558013592 deg/100m
 
 ### Trajectory Comparison
 
-![Trajectory Evaluation](figures/HKisland_GNSS03-6.png)
+![Trajectory Evaluation](figures/AMtown02-4.png)
 
 This figure is generated from the same inputs used for evaluation (`ground_truth.txt` and `CameraTrajectory.txt`) and includes:
 
