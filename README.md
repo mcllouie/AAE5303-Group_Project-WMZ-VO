@@ -33,17 +33,17 @@
 
 ## 📊 Executive Summary
 
-This report presents the implementation and evaluation of **Monocular Visual Odometry (VO)** using the **ORB-SLAM3** framework on the **HKisland_GNSS03** UAV aerial imagery dataset. The project evaluates trajectory accuracy against RTK ground truth using **four parallel, monocular-appropriate metrics** computed with the `evo` toolkit.
+This report presents the implementation and evaluation of **Monocular Visual Odometry (VO)** using the **ORB-SLAM3** framework on the **AMtown02** UAV aerial imagery dataset. The project evaluates trajectory accuracy against RTK ground truth using **four parallel, monocular-appropriate metrics** computed with the `evo` toolkit.
 
 ### Key Results
 
 | Metric | Value | Description |
 |--------|-------|-------------|
-| **ATE RMSE** | **1.7409 m** | Global accuracy after Sim(3) alignment (scale corrected) |
-| **RPE Trans Drift** | **1.3356 m/m** | Translation drift rate (mean error per meter, delta=10 m) |
-| **RPE Rot Drift** | **109.4720 deg/100m** | Rotation drift rate (mean angle per 100 m, delta=10 m) |
-| **Completeness** | **94.99%** | Matched poses / total ground-truth poses (1701 / 1955) |
-| **Estimated poses** | 1,857 | Trajectory poses in `CameraTrajectory.txt` |
+| **ATE RMSE** | **2.9065 m** | Global accuracy after Sim(3) alignment (scale corrected) |
+| **RPE Trans Drift** | **1.2821 m/m** | Translation drift rate (mean error per meter, delta=10 m) |
+| **RPE Rot Drift** | **43.0417 deg/100m** | Rotation drift rate (mean angle per 100 m, delta=10 m) |
+| **Completeness** | **94.27%** | Matched poses / total ground-truth poses (1701 / 1955) |
+| **Estimated poses** | 3,535 | Trajectory poses in `CameraTrajectory.txt` |
 
 ---
 
@@ -68,7 +68,7 @@ This assignment focuses on **Monocular VO mode**, which:
 ### Objectives
 
 1. Implement monocular Visual Odometry using ORB-SLAM3
-2. Process UAV aerial imagery from the HKisland_GNSS03 dataset
+2. Process UAV aerial imagery from the AMtown02 dataset
 3. Extract RTK (Real-Time Kinematic) GPS data as ground truth
 4. Evaluate trajectory accuracy using four parallel metrics appropriate for monocular VO
 5. Document the complete workflow for reproducibility
@@ -233,14 +233,14 @@ The dataset is from the **MARS-LVIG** UAV dataset, captured over Hong Kong Islan
 
 | Property | Value |
 |----------|-------|
-| **Dataset Name** | HKisland_GNSS03 |
+| **Dataset Name** | AMtown02 |
 | **Source** | MARS-LVIG / UAVScenes |
-| **Duration** | 390.78 seconds (~6.5 minutes) |
-| **Total Images** | 3,833 frames |
+| **Duration** | 749.91 seconds (~12.5 minutes) |
+| **Total Images** | 7,499 frames |
 | **Image Resolution** | 2448 × 2048 pixels |
 | **Frame Rate** | ~10 Hz |
-| **Trajectory Length** | ~1,900 meters |
-| **Height Variation** | 0 - 90 meters |
+| **Trajectory Length** | ~3,550 meters |
+| **Height Variation** | 0 - 80 meters |
 
 ### Data Sources
 
@@ -255,7 +255,7 @@ RTK (Real-Time Kinematic) GPS provides centimeter-level positioning accuracy:
 
 | Property | Value |
 |----------|-------|
-| **RTK Positions** | 1,955 poses |
+| **RTK Positions** | 3,750 poses |
 | **Rate** | 5 Hz |
 | **Accuracy** | ±2 cm (horizontal), ±5 cm (vertical) |
 | **Coordinate System** | WGS84 → Local ENU |
@@ -304,17 +304,17 @@ Camera.RGB: 1
 **Note on ORB-SLAM3 settings format**:
 
 - In ORB-SLAM3 `File.version: "1.0"` settings files, the intrinsics are typically stored as `Camera1.fx`, `Camera1.fy`, etc. (see `Examples/Monocular/HKisland_Mono.yaml` in the main repo).
-- This demo includes `docs/HKisland_GNSS03-6.yaml` as a minimal, human-readable reference of the same calibration values.
+- This demo includes `docs/AMtown02-4.yaml` as a minimal, human-readable reference of the same calibration values.
 
 ### ORB Feature Extraction Parameters
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | `nFeatures` | 15000 | Features per frame |
-| `scaleFactor` | 1.328 | Pyramid scale factor |
+| `scaleFactor` | 1.32 | Pyramid scale factor |
 | `nLevels` | 15 | Pyramid levels |
-| `iniThFAST` | 13 | Initial FAST threshold |
-| `minThFAST` | 2 | Minimum FAST threshold |
+| `iniThFAST` | 15 | Initial FAST threshold |
+| `minThFAST` | 5 | Minimum FAST threshold |
 
 ### Running ORB-SLAM3 (example)
 
@@ -331,25 +331,25 @@ This report assumes you have already generated a TUM-format trajectory file (e.g
 VISUAL ODOMETRY EVALUATION RESULTS
 ================================================================================
 
-Ground Truth: RTK trajectory (1,955 poses)
-Estimated:    ORB-SLAM3 camera trajectory (2,826 poses)
-Matched Poses: 1,857 / 1,955 (94.98721227621483%)  ← Completeness
+Ground Truth: RTK trajectory (3,750 poses)
+Estimated:    ORB-SLAM3 camera trajectory (3,535 poses)
+Matched Poses: 3,535 / 3,750 (94.26666666666667%)  ← Completeness
 
 METRIC 1: ATE (Absolute Trajectory Error)
 ────────────────────────────────────────
-RMSE:   1.7409079037465311 m
-Mean:   0.865972175354548 m
-Std:    1.5102491585294304 m
+RMSE:   2.906494023048328 m
+Mean:   2.640428842875468 m
+Std:    1.2148428012409553 m
 
 METRIC 2: RPE Translation Drift (distance-based, delta=10 m)
 ────────────────────────────────────────
-Mean translational RPE over 10 m: 13.355601640370502 m
-Translation drift rate:           1.3355601640370502 m/m
+Mean translational RPE over 10 m: 12.820904392409915 m
+Translation drift rate:           1.2820904392409915 m/m
 
 METRIC 3: RPE Rotation Drift (distance-based, delta=10 m)
 ────────────────────────────────────────
-Mean rotational RPE over 10 m: 10.947204601618212 deg
-Rotation drift rate:        109.47204601618212 deg/100m
+Mean rotational RPE over 10 m: 4.304172558013592 deg
+Rotation drift rate:        43.04172558013592 deg/100m
 
 ================================================================================
 ```
@@ -358,19 +358,19 @@ Rotation drift rate:        109.47204601618212 deg/100m
 
 | Parameter | Value |
 |-----------|-------|
-| **Sim(3) scale correction** | 7.4120233006636935 |
-| **Sim(3) translation** | [0.33011584, 0.06634049, 6.1227189] m |
+| **Sim(3) scale correction** | 14.304133685260755 |
+| **Sim(3) translation** | [-2.95181972 -0.41600864 15.3305147] m |
 | **Association threshold** | \(t_{max\_diff}\) = 0.1 s |
-| **Association rate (Completeness)** | 94.98% |
+| **Association rate (Completeness)** | 94.27% |
 
 ### Performance Analysis
 
 | Metric | Value | Grade | Interpretation |
 |--------|-------|-------|----------------|
-| **ATE RMSE** | 1.74 m | A | Small global error after alignment |
-| **RPE Trans Drift** | 1.34 m/m | A | Small local drift per traveled distance |
-| **RPE Rot Drift** | 109.47 deg/100m | E | Severe orientation drift |
-| **Completeness** | 94.99% | B | Many poses can be evaluated, accuracy is good |
+| **ATE RMSE** | 2.91 m | B | Small global error after alignment |
+| **RPE Trans Drift** | 1.28 m/m | A | Small local drift per traveled distance |
+| **RPE Rot Drift** | 43.04 deg/100m | C | Some orientation drift |
+| **Completeness** | 94.27% | B | Many poses can be evaluated, accuracy is good |
 
 ---
 
@@ -395,7 +395,7 @@ This figure is generated from the same inputs used for evaluation (`ground_truth
 
 ### Strengths
 
-1. **High evaluation coverage**: 94.99% completeness indicates that a large portion of the ground-truth poses can be associated and evaluated.
+1. **High evaluation coverage**: 94.27% completeness indicates that a large portion of the ground-truth poses can be associated and evaluated.
 
 2. **End-to-end pipeline**: The system produces a usable TUM trajectory and can be evaluated reproducibly with standard tooling.
 
@@ -419,8 +419,8 @@ This figure is generated from the same inputs used for evaluation (`ground_truth
 
 This assignment demonstrates monocular Visual Odometry implementation using ORB-SLAM3 on UAV aerial imagery. Key findings:
 
-1. ✅ **System Operation**: ORB-SLAM3 successfully processes 1,857 images over 1.9 km trajectory
-2. ✅ **Evaluation coverage**: 94.99% completeness shows that many poses can be evaluated against RTK ground truth
+1. ✅ **System Operation**: ORB-SLAM3 successfully processes 3,535 images over 3.5 km trajectory
+2. ✅ **Evaluation coverage**: 94.27% completeness shows that many poses can be evaluated against RTK ground truth
 3. ✅ **Tracking stability**: Seldom tracking failures indicate strong robustness measures
 4. ⚠️ **Accuracy**: The current baseline exhibits very rotation drift rates error on this sequence
 
@@ -482,16 +482,16 @@ AAE5303_assignment2_orbslam3_demo-/
 
 ```bash
 # 1. Extract images from ROS bag
-python3 extract_images_final.py HKisland_GNSS03.bag --output extracted_data
+python3 extract_images_final.py AMtown02.bag --output extracted_data
 
 # 2. Run ORB-SLAM3 VO
 ./Examples/Monocular/mono_tum \
     Vocabulary/ORBvoc.txt \
-    Examples/Monocular/DJI_Camera.yaml \
+    Examples/Monocular/AMtown02.yaml \
     data/extracted_data
 
 # 3. Extract RTK ground truth
-python3 extract_rtk_groundtruth.py HKisland_GNSS03.bag --output ground_truth.txt
+python3 extract_rtk_groundtruth.py AMtown02.bag --output ground_truth.txt
 
 # 4. Evaluate trajectory
 python3 scripts/evaluate_vo_accuracy.py \
@@ -507,8 +507,8 @@ python3 scripts/evaluate_vo_accuracy.py \
 
 ```
 # timestamp x y z qx qy qz qw
-1698132964.499888 0.0000000 0.0000000 0.0000000 -0.0000000 -0.0000000 -0.0000000 1.0000000
-1698132964.599976 -0.0198950 0.0163751 -0.0965251 -0.0048082 0.0122335 0.0013237 0.9999127
+1658132911.697211 -0.000002629 0.004717012 -0.138795167 -0.002219999 -0.004891205 -0.001483787 0.999984443
+1658132912.099022 -0.004541271 0.034000594 -0.207529515 0.011936478 -0.004205735 -0.001616249 0.999918640
 ...
 ```
 
@@ -546,7 +546,7 @@ evo_rpe tum ground_truth.txt CameraTrajectory.txt \
 
 *The Hong Kong Polytechnic University*
 
-Jan 2026
+APR 2026
 
 </div>
 
