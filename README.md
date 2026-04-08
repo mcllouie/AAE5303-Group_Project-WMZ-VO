@@ -9,7 +9,7 @@
 
 **Monocular Visual Odometry Evaluation on UAV Aerial Imagery**
 
-*Hong Kong Island GNSS Dataset - MARS-LVIG*
+*AMtown Dataset - MARS-LVIG*
 
 </div>
 
