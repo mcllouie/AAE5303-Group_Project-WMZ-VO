@@ -1,7 +1,7 @@
 import rosbag
 import numpy as np
 
-bag = rosbag.Bag('HKisland_GNSS03.bag')
+bag = rosbag.Bag('AMtown02.bag')
 rtk_data = []
 
 for topic, msg, t in bag.read_messages(topics=['/dji_osdk_ros/rtk_position']):
